@@ -1,9 +1,11 @@
+import styles from './Livros.module.css';
+
 function Livros() {
     return(
-        <>
-            <h1>PÁGINA DE LISTAGEM DE LIVROS</h1>
-        </>
+       <section className={styles.livros_container}>
+            <h1>Aqui serão listados os livros</h1>
+       </section>
     )
-};
+}
 
 export default Livros;

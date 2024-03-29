@@ -4,8 +4,8 @@ import Container from './Container';
 
 function NavBar() {
     return(
-        <>
             <Container>
+
                 <ul className={styles.list}>
 
                     <li className={styles.item}>
@@ -25,8 +25,7 @@ function NavBar() {
                 <Outlet/>
 
             </Container>
-    </>
  )
-};
+}
 
 export default NavBar;

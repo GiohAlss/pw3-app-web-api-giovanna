@@ -1,0 +1,15 @@
+.novo_livro_container{
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4em;
+    background-color: #fff;
+}
+
+.novo_livro_container h1{
+    font-size: 2.5em;
+    margin-bottom: .5em;
+}

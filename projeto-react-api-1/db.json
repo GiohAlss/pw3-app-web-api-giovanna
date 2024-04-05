@@ -1,0 +1,25 @@
+{
+    "books": [],
+    "categorias": [
+        {
+            "id": 1,
+            "name": "FICÇÃO CIENTÍFICA"
+        },
+        {
+            "id": 2,
+            "name": "BACK-END"
+        },
+        {
+            "id": 3,
+            "name": "FRONT-END"
+        },
+        {
+            "id": 4,
+            "name": "BANCO DE DADOS"
+        },
+        {
+            "id": 5,
+            "name": "CLOUD COMPUTING"
+        }
+    ]
+}

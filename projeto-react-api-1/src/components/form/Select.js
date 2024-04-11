@@ -6,14 +6,14 @@ function Select({text, name, options, handlerOnchange, value}) {
 
             <label htmlFor={name}>{text}</label>
 
-            <select name={name} id={name}>
+            <select name={name} id={name} onChange={handlerOnchange}>
 
                 <option>Selecione uma categoria</option>
 
                 {
-                    options.map((option)=>[
+                    options.map((option)=>(
                         <option value={option.id} key={option.id}>{option.name}</option>
-                    ])
+                    ))
                 }
 
             </select>

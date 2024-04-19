@@ -18,7 +18,7 @@ function NovoLivro() {
     const [book, setBook] = useState({});
 
     /*Recupera od dados de catefpriadp arquivo db.jso*/
-    useEffect(() =>{
+    useEffect(()=> {
         fetch(
             'http://localhost:5000/categorias',
             {
@@ -72,7 +72,7 @@ function NovoLivro() {
             .then(
                 (data)=>{
                     console.log(data)
-                    navigate('/livros')
+                    navigate('/livros', {state:'Livro cadastrado com sucesso!'})
                 }
             )
             .catch(

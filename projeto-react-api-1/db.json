@@ -19,6 +19,16 @@
         "id": "5",
         "category": "CLOUD COMPUTING"
       }
+    },
+    {
+      "id": "8572",
+      "name_livro": "Teste 2",
+      "name_autor": "Teste 2",
+      "descricao_livro": "Teste 2",
+      "category": {
+        "id": "4",
+        "category": "BANCO DE DADOS"
+      }
     }
   ],
   "categorias": [

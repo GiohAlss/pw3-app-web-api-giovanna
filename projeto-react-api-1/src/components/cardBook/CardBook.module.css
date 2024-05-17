@@ -36,3 +36,34 @@
     background-color: #CCC;
     margin-right: 5px;
 }
+
+/* CSS DE FORMATAÇÃO DOS BOTÕES DE ALTERAR/EXCLUIR */
+.book_card_actions{
+    margin-top: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book_card_actions a, 
+.book_card_actions button{
+    text-decoration: none;
+    border: none;
+    background-color: #FFF;
+    color: #222;
+    font-size: .9em;
+    padding: .6em 1em;
+    margin-right: 1em;
+    border: 1px solid #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 1.0s;
+    cursor: pointer;
+}
+
+.book_card_actions a:hover, 
+.book_card_actions button:hover{
+    background-color: #FF4733;
+    color: #FFF;
+}

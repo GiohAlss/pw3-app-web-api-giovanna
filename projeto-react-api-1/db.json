@@ -11,23 +11,23 @@
       }
     },
     {
-      "id": "1491",
-      "name_livro": "Teste de Livro",
-      "name_autor": "Teste de Autor",
-      "descricao_livro": "Teste de Descrição",
-      "category": {
-        "id": "5",
-        "category": "CLOUD COMPUTING"
-      }
-    },
-    {
-      "id": "8572",
-      "name_livro": "Teste 2",
-      "name_autor": "Teste 2",
-      "descricao_livro": "Teste 2",
+      "id": "b3a0",
+      "name_livro": "Livro 2",
+      "name_autor": "Livro 2",
+      "descricao_livro": "Livro 2",
       "category": {
         "id": "4",
         "category": "BANCO DE DADOS"
+      }
+    },
+    {
+      "id": "c688",
+      "name_livro": "Livro 3",
+      "name_autor": "Livro 3",
+      "descricao_livro": "Livro 3",
+      "category": {
+        "id": "1",
+        "category": "FICÇÃO CIENTÍFICA"
       }
     }
   ],

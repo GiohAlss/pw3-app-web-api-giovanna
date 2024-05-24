@@ -22,7 +22,6 @@ function CardBook({id, livro, autor, categoria, handlerRemove}) {
                     Editar
                 </Link>
 
-
                 <button onClick={remove}>
                     Excluir
                 </button>

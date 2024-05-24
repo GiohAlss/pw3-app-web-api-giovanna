@@ -1,7 +1,8 @@
 import {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
-import styles from './EditarLivro.module.css';
+import styles from './EditarLivro.module.css'
 
 import Input from '../components/form/Input';
 import Select from '../components/form/Select';
@@ -10,11 +11,13 @@ function EditarLivro() {
 
     const [categories, setCategories] = useState([]);
 
+    const [book, setBook] = useState({});
+
+    const navigate = useNavigate();
+
     //Recuperando o ID da URL
     const {id} = useParams(); //Paramêtro via URL
     console.log('ID:' + id);
-
-    const [book, setBook] = useState({});
 
     //
     useEffect(()=> {
@@ -66,12 +69,34 @@ function EditarLivro() {
             category: event.target.options[event.target.selectedIndex].text
         }});
     }
+    
+     //Funcionalidade de edição de livro
+    function editBook(book) {
+        fetch(`http://localhost:5000/books/${book.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(book)
+        })
+        .then(resp=>resp.json())
+        .then((data)=>{
+            setBook(data)
+            navigate('/livros', {state:'Livro alterado com sucesso!'})
+        })
+        .catch((err)=>{console.log(err)});
+    }
 
+    //Função de submit controlado por dados
+    function submit(event) {
+        event.preventDefault();
+        editBook(book);
+    }
+    
     return(
         <div className={styles.book_container}>
             <hi className={styles.book_text}>Edição de Livro</hi>
-
-            <form>
+            <form onSubmit={submit}>
 
                 <Input type='text' name='name_livro' id='name_livro' text='Título do livro' placeholder='Digite o título do livro' value={book.name_livro} handlerOnchange={handlerChangeBook}/>
                 <Input type='text' name='name_autor' id='name_autor' text='Autor' placeholder='Digite o nome do autor' value={book.name_autor} handlerOnchange={handlerChangeBook}/>
@@ -79,6 +104,10 @@ function EditarLivro() {
 
                 <Select name='categoria_id' text='Selecione a categoria do livro' options={categories} handlerOnchange={handlerChangeCategory} />
 
+                <p>
+                    <input type='submit' value='Editar livro' />
+                </p>
+            
             </form>
         </div>
     )

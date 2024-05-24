@@ -29,6 +29,26 @@
         "id": "1",
         "category": "FICÇÃO CIENTÍFICA"
       }
+    },
+    {
+      "id": "9718",
+      "name_livro": "teste de edição",
+      "name_autor": "aaaaaaa",
+      "descricao_livro": "aaaaaaa",
+      "category": {
+        "id": "5",
+        "category": "CLOUD COMPUTING"
+      }
+    },
+    {
+      "id": "b898",
+      "name_livro": "oooooooosssssssssss",
+      "name_autor": "ooooooooo",
+      "descricao_livro": "oooooooooooo",
+      "category": {
+        "id": "1",
+        "category": "FICÇÃO CIENTÍFICA"
+      }
     }
   ],
   "categorias": [

@@ -18,28 +18,28 @@ function NovoLivro() {
     const [book, setBook] = useState({});
 
     /*Recupera od dados de catefpriadp arquivo db.jso*/
-    useEffect(()=> {
-        fetch(
-            'http://localhost:5000/categorias',
-            {
-                method:'GET',
-                headers:{
-                    'Content-Type':'application/json'
-                }
-            }).then(
-                (resp)=>
-                    resp.json()
-            ).then(
-                (data)=>{
-                    setCategories(data);
-                    console.log(data);
-                }
-            ).catch(
-                (error)=>{
-                    console.log(error);
-                }
-            )
-        }, [])
+    // useEffect(()=> {
+    //     fetch(
+    //         'http://localhost:5000/categorias',
+    //         {
+    //             method:'GET',
+    //             headers:{
+    //                 'Content-Type':'application/json'
+    //             }
+    //         }).then(
+    //             (resp)=>
+    //                 resp.json()
+    //         ).then(
+    //             (data)=>{
+    //                 setCategories(data);
+    //                 console.log(data);
+    //             }
+    //         ).catch(
+    //             (error)=>{
+    //                 console.log(error);
+    //             }
+    //         )
+    //     }, [])
 
         /*Handler de captura dos dados de input*/
         function handlerChangeBook(event) {
@@ -59,10 +59,13 @@ function NovoLivro() {
 
         /*Inserção dos dados de livro*/
         function createBook(book) {
-            fetch('http://localhost:5000/books', {
+            fetch('http://localhost:5000/inserirLivro', {
                 method:'POST',
+                mode:'cors',
                 headers:{
-                    'Content-Type':'application/json'
+                    'Content-Type':'application/json',
+                    'Access-Control-Allow-Origin':'*',
+                    'Access-Control-Allow-Headers':'*',
                 },
                 body: JSON.stringify(book)
             })
@@ -93,8 +96,8 @@ function NovoLivro() {
             <h1>Cadastro de livro</h1>
             <form onSubmit={submit}>
 
-                <Input type='text' name='name_livro' id='name_livro' text='Título do livro' placeholder='Digite o título do livro' handlerOnchange={handlerChangeBook} />
-                <Input type='text' name='name_autor' id='name_autor' text='Autor' placeholder='Digite o nome do autor' handlerOnchange={handlerChangeBook} />
+                <Input type='text' name='nome_livro' id='nome_livro' text='Título do livro' placeholder='Digite o título do livro' handlerOnchange={handlerChangeBook} />
+                <Input type='text' name='autor_livro' id='autor_livro' text='Autor' placeholder='Digite o nome do autor' handlerOnchange={handlerChangeBook} />
                 <Input type='text' name='descricao_livro' id='descricao_livro' text='Descrição' placeholder='Digite a descrição do livro' handlerOnchange={handlerChangeBook} />
 
                 <Select name='categoria_id' text='Selecione a categoria do livro' options={categories} handlerOnchange={handlerChangeCategory} />

@@ -20,39 +20,42 @@ function EditarLivro() {
     console.log('ID:' + id);
 
     //
-    useEffect(()=> {
-        fetch(
-            'http://localhost:5000/categorias',
-            {
-                method:'GET',
-                headers:{
-                    'Content-Type':'application/json'
-                }
-            }).then(
-                (resp)=>
-                    resp.json()
-            ).then(
-                (data)=>{
-                    setCategories(data);
-                    console.log(data);
-                }
-            ).catch(
-                (error)=>{
-                    console.log(error);
-                }
-            )
-        }, [])
+    // useEffect(()=> {
+    //     fetch(
+    //         'http://localhost:5000/categorias',
+    //         {
+    //             method:'GET',
+    //             headers:{
+    //                 'Content-Type':'application/json'
+    //             }
+    //         }).then(
+    //             (resp)=>
+    //                 resp.json()
+    //         ).then(
+    //             (data)=>{
+    //                 setCategories(data);
+    //                 console.log(data);
+    //             }
+    //         ).catch(
+    //             (error)=>{
+    //                 console.log(error);
+    //             }
+    //         )
+    //     }, [])
 
     //Recuperando os dados de livro para edição
     useEffect(()=>{
-        fetch(`http://localhost:5000/books/${id}`, {
-            method: 'GET',
-            headers: {
-              'Content-Type':'application/json'
+        fetch(`http://localhost:5000/listagemLivro/${id}`, {
+            method:'GET',
+            mode:'cors',
+                headers:{
+                    'Content-Type':'application/json',
+                    'Access-Control-Allow-Origin':'*',
+                    'Access-Control-Allow-Headers':'*',
             }
         })
         .then((resp)=>resp.json())
-        .then((data)=>setBook(data))
+        .then((data)=>setBook(data.data)) 
         .catch((err)=>{console.log(err)});
     }, []);
 
@@ -72,16 +75,19 @@ function EditarLivro() {
     
      //Funcionalidade de edição de livro
     function editBook(book) {
-        fetch(`http://localhost:5000/books/${book.id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type':'application/json'
+        fetch(`http://localhost:5000/alterarLivro`, {
+            method:'PUT',
+            mode:'cors',
+                headers:{
+                    'Content-Type':'application/json',
+                    'Access-Control-Allow-Origin':'*',
+                    'Access-Control-Allow-Headers':'*',
             },
             body: JSON.stringify(book)
         })
         .then(resp=>resp.json())
         .then((data)=>{
-            setBook(data)
+            setBook(data.data)
             navigate('/livros', {state:'Livro alterado com sucesso!'})
         })
         .catch((err)=>{console.log(err)});
@@ -98,8 +104,8 @@ function EditarLivro() {
             <hi className={styles.book_text}>Edição de Livro</hi>
             <form onSubmit={submit}>
 
-                <Input type='text' name='name_livro' id='name_livro' text='Título do livro' placeholder='Digite o título do livro' value={book.name_livro} handlerOnchange={handlerChangeBook}/>
-                <Input type='text' name='name_autor' id='name_autor' text='Autor' placeholder='Digite o nome do autor' value={book.name_autor} handlerOnchange={handlerChangeBook}/>
+                <Input type='text' name='nome_livro' id='nome_livro' text='Título do livro' placeholder='Digite o título do livro' value={book.nome_livro} handlerOnchange={handlerChangeBook}/>
+                <Input type='text' name='autor_livro' id='autor_livro' text='Autor' placeholder='Digite o nome do autor' value={book.autor_livro} handlerOnchange={handlerChangeBook}/>
                 <Input type='text' name='descricao_livro' id='descricao_livro' text='Descrição' placeholder='Digite a descrição do livro' value={book.descricao_livro} handlerOnchange={handlerChangeBook}/>
 
                 <Select name='categoria_id' text='Selecione a categoria do livro' options={categories} handlerOnchange={handlerChangeCategory} />

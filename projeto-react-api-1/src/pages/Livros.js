@@ -12,29 +12,35 @@ function Livros() {
     const [bookMessage, setBookMessage] = useState('');
 
     useEffect(()=>{
-        fetch('http://localhost:5000/books', {
-            method: 'GET',
+        fetch('http://localhost:5000/listagemLivros', {
+            method:'GET',
+            mode:'cors',
             headers: {
-              'Content-Type':'application/json'
+              'Content-Type':'application/json',
+              'Access-Control-Allow-Origin':'*',
+              'Access-Control-Allow-Headers':'*',
             }
         })
         .then((resp)=>resp.json())
-        .then((data)=>setBooks(data))
+        .then((data)=>setBooks(data.data))
         .catch((err)=>{console.log(err)});
-    }, [books]);
+    }, []);
 
     //Função de exclusão de livro
     function removeBooks(id) {
-        fetch(`http://localhost:5000/books/${id}`, {
-            method: 'DELETE',
+        fetch(`http://localhost:5000/excluirLivro/${id}`, {
+            method:'DELETE',
+            mode:'cors',
             headers: {
-              'Content-Type':'application/json'
+              'Content-Type':'application/json',
+              'Access-Control-Allow-Origin':'*',
+              'Access-Control-Allow-Headers':'*',
             }
         })
         .then((resp)=>resp.json())
         .then(
             (data)=>{
-                //setBooks(books.filter((book_data)=>book_data.id !== id)) //filtra e deleta o único id que é diferente dos demais
+                setBooks(books.filter((book_data)=>book_data.cod_livro !== id)) //filtra e deleta o único id que é diferente dos demais
                 setBookMessage('Livro escluído com sucesso!')
             }
         )
@@ -75,11 +81,11 @@ function Livros() {
             {
                 books.map((book)=>(
                     <CardBook
-                        id={book.id}
-                        livro={book.name_livro}
-                        autor={book.name_autor}
-                        categoria={book.category.category}
-                        key={book.id}
+                        id={book.cod_livro}
+                        livro={book.nome_livro}
+                        autor={book.autor_livro}
+                        //categoria={book.category.category}
+                        key={book.cod_livro}
                         handlerRemove={removeBooks}
                     />
                     

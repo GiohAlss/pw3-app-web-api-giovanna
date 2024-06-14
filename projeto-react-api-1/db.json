@@ -49,6 +49,12 @@
         "id": "1",
         "category": "FICÇÃO CIENTÍFICA"
       }
+    },
+    {
+      "id": "1d45",
+      "name_livro": "Teste",
+      "name_autor": "Teste",
+      "descricao_livro": "Teste"
     }
   ],
   "categorias": [
